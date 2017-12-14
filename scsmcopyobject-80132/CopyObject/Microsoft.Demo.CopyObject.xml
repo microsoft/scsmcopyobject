@@ -1,0 +1,72 @@
+﻿<ManagementPack ContentReadable="true" SchemaVersion="1.1" OriginalSchemaVersion="1.1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <Manifest>
+    <Identity>
+      <ID>Microsoft.Demo.CopyObject</ID>
+      <Version>1.1.0.0</Version>
+    </Identity>
+    <Name>Microsoft.Demo.CopyObject</Name>
+    <References>
+      <Reference Alias="System">
+        <ID>System.Library</ID>
+        <Version>7.0.5826.0</Version>
+        <PublicKeyToken>31bf3856ad364e35</PublicKeyToken>
+      </Reference>
+      <Reference Alias="ServiceManager.UI.Administration">
+        <ID>Microsoft.EnterpriseManagement.ServiceManager.UI.Administration</ID>
+        <Version>7.0.5826.0</Version>
+        <PublicKeyToken>31bf3856ad364e35</PublicKeyToken>
+      </Reference>
+      <Reference Alias="Console">
+        <ID>Microsoft.EnterpriseManagement.ServiceManager.UI.Console</ID>
+        <Version>7.0.5826.0</Version>
+        <PublicKeyToken>31bf3856ad364e35</PublicKeyToken>
+      </Reference>
+      <Reference Alias="IncidentLibrary">
+        <ID>System.WorkItem.Incident.Library</ID>
+        <Version>7.0.5826.0</Version>
+        <PublicKeyToken>31bf3856ad364e35</PublicKeyToken>
+      </Reference>
+    </References>
+  </Manifest>
+  <Categories>
+    <Category ID="Category.SCSM.MP" Value="Console!Microsoft.EnterpriseManagement.ServiceManager.ManagementPack">
+      <ManagementPackName>Microsoft.Demo.CopyObject</ManagementPackName>
+      <ManagementPackVersion>1.0.0.0</ManagementPackVersion>
+      <ManagementPackPublicKeyToken>9396306c2be7fcc4</ManagementPackPublicKeyToken>
+    </Category>
+    <Category ID="Category.CopyIncidentCommandMultiselect" Target="CopyIncident" Value="Console!Microsoft.EnterpriseManagement.ServiceManager.UI.Console.MultiSelectTask" />
+  </Categories>
+  <Presentation>
+    <ConsoleTasks>
+      <ConsoleTask ID="CopyIncident" Accessibility="Public" Enabled="true" Target="IncidentLibrary!System.WorkItem.Incident" RequireOutput="false">
+        <Assembly>Console!SdkDataAccessAssembly</Assembly>
+        <Handler>Microsoft.EnterpriseManagement.UI.SdkDataAccess.ConsoleTaskHandler</Handler>
+        <Parameters>
+          <Argument Name="Assembly">CopyObject</Argument>
+          <Argument Name="Type">CopyObject.ConsoleTask</Argument>
+          <Argument>Incident</Argument>
+        </Parameters>
+      </ConsoleTask>
+    </ConsoleTasks>
+    <ImageReferences>
+      <ImageReference ElementID="CopyIncident" ImageID="Copy" />
+    </ImageReferences>
+  </Presentation>
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="Microsoft.Demo.CopyObject">
+          <Name>Copy Object</Name>
+          <Description>Demonstration MP for how to copy an object.</Description>
+        </DisplayString>
+        <DisplayString ElementID="CopyIncident">
+          <Name>Copy Incident</Name>
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
+  <Resources>
+    <Assembly ID="ConsoleTaskAssembly" Accessibility="Public" FileName="CopyObject.dll" HasNullStream="false" QualifiedName="CopyObject" />
+    <Image ID="Copy" Accessibility="Public" FileName="Copy_16x16.png" HasNullStream="false" />
+  </Resources>
+</ManagementPack>
